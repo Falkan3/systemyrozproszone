@@ -39,6 +39,15 @@
     min-width: 100%;
 }
 
+.images img {
+    max-width: 100%;
+}
+@media (max-width: 768px) {
+    .images img {
+        margin: 15px 0;
+    }
+}
+
 @media (min-width: 768px) {
     .sidebar-mini.sidebar-collapse .main-header .logo {
         width: 65px;

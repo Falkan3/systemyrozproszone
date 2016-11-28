@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CreatePhotosTable extends Migration
 {
@@ -21,6 +22,7 @@ class CreatePhotosTable extends Migration
             $table->string('comment');
             $table->boolean('public');
             $table->string('location');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

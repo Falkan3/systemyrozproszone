@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="<?php if(Auth::check()){url('home');} else {url('/');} ?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>SysR</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -18,7 +18,13 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{URL::asset('images/dist/user.jpg')}}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">
+                             @if (Auth::guest())
+                                Guest
+                            @else
+                                {{Auth::user()->name}}
+                            @endif
+                        </span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -26,23 +32,37 @@
                             <img src="{{URL::asset('images/dist/user.jpg')}}" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                @if (Auth::guest())
+                                    Guest
+                                @else
+                                    {{Auth::user()->name}}
+                                    <small>Member since {{Auth::user()->created_at}}</small>
+                                @endif
                             </p>
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                @if (Auth::check())
+                                    <a href="{{url('home')}}" class="btn btn-default btn-flat">Profile</a>
+                                @endif
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                @if (Auth::guest())
+                                    <a href="{{url('/login')}}" class="btn btn-default btn-flat">Log in</a>
+                                @else
+                                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Log out
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                @endif
                             </div>
                         </li>
                     </ul>
-                </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>

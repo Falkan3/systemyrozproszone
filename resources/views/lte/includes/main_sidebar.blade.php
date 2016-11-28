@@ -8,7 +8,11 @@
                 <img src="{{URL::asset('images/dist/user.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                @if (Auth::guest())
+                    <p>Guest</p>
+                @else
+                    <p>{{Auth::user()->name}}</p>
+                @endif
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>

@@ -54,11 +54,9 @@
 
     @yield('content')
 
-    @include('lte.includes.footer')
-
     <?php /* @include('lte.includes.footer') */ ?>
 
-    @include('lte.includes.panel_right')
+    <?php /* @include('lte.includes.panel_right') */ ?>
 </div>
 <!-- ./wrapper -->
 

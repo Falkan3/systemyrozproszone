@@ -16,4 +16,13 @@ Route::get('/', 'MainController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::resource('/photo', 'PhotoController');
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('/photo', 'PhotoController');
+
+    Route::group(['prefix' => 'photo'], function () {
+
+    });
+});
+
+Route::get('/previous', 'HomeController@PreviousPhoto');
+Route::get('/next', 'HomeController@NextPhoto');
