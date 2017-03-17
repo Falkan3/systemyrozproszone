@@ -41,10 +41,10 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{route('photo.edit', $photo[0]['id'])}}">Edit photo</a></li>
                                         <li><a href="{{ url('/photo') . "/" . $photo[0]['id'] }}"
-                                           onclick="event.preventDefault();
+                                               onclick="event.preventDefault();
                                                      document.getElementById('destroy-form').submit();">
-                                            Remove photo
-                                        </a></li>
+                                                Remove photo
+                                            </a></li>
 
                                         {{ Form::open(array('id' => 'destroy-form', 'route' => array('photo.destroy', $photo[0]['id']), 'method' => 'delete')) }}
                                         {{ Form::close() }}
@@ -80,9 +80,9 @@
                 <!-- /.box -->
             </div>
             <!-- /.col -->
+            <!-- /.row -->
+        </section>
     </div>
-    <!-- /.row -->
-    </section>
     <!-- /.content -->
     <!-- /.content-wrapper -->
 

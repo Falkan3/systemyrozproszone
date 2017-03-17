@@ -94,7 +94,6 @@
                                 </div>
 
 
-
                                 <div class="pull-right">
                                     {{Form::submit('Upload', ['class' => "btn btn-primary btn-sm btn-flat", 'style' => "margin: 15px;"])}}
                                 </div>
@@ -117,9 +116,9 @@
                 <!-- /.box -->
             </div>
             <!-- /.col -->
+            <!-- /.row -->
+        </section>
     </div>
-    <!-- /.row -->
-    </section>
     <!-- /.content -->
     <!-- /.content-wrapper -->
 
